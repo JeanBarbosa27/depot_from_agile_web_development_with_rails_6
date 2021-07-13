@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
+  fixtures :products
+
   test 'product price must be positive' do
     product = Product.new(
       title: 'My book title',
@@ -41,4 +43,17 @@ class ProductTest < ActiveSupport::TestCase
       assert new_product(image_url).invalid?, "#{image_url} shouldn't be valid"
     end
   end
+
+  test 'product is not valid without a unique title' do
+    product = Product.new(
+      title: products(:ruby).title,
+      description: 'A nice description',
+      image_url: 'fred.gif',
+      price: 1
+    )
+
+    assert product.invalid?
+    assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
+  end
+
 end

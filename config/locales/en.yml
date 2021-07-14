@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+  errors:
+    models:
+      product:
+        attributes:
+          title:
+            short: 'is too short, type at least 10 characters'

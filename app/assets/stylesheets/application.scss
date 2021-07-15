@@ -48,6 +48,7 @@ header.main {
   }
 
   nav {
+    position: relative;
     padding-bottom: 1em;
     background: #141;
     text-align: center;
@@ -82,6 +83,14 @@ header.main {
           }
         }
       }
+    }
+
+    .page_load_date_time {
+      position: absolute;
+      bottom: 1em;
+      left: 50%;
+      color: #ffffff;
+      transform: translateX(-50%);   
     }
   }
 

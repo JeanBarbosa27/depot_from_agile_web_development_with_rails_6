@@ -33,8 +33,16 @@ div.field,
 div.actions {
   margin-bottom: 10px; }
 
-#notice {
-  color: green; }
+.notice, #notice {
+  margin-bottom: 1em;
+  padding: 1em 1.414em;
+  color: #882;
+  font-weight: bold;
+  text-align: center;
+  background: #ffb;
+  border: solid 0.177em #882;
+  border-radius: 0.5em;
+}
 
 .field_with_errors {
   padding: 2px;

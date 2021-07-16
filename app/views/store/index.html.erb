@@ -2,7 +2,12 @@
   <aside id="notice"><%= notice %></aside>
 <% end %>
 
-<h1>Your Pragmatic Catalog</h1>
+<h1>
+  Your Pragmatic Catalog
+  <% if session[:counter] > 5 %>
+    - <small><%= session[:counter] %> <%= 'session'.pluralize(session[:counter]) %></small>
+  <% end %>
+</h1>
 <ul class="catalog">
 <% cache @products do %>
   <% @products.each do |product| %>
@@ -11,7 +16,10 @@
         <%= image_tag product.image_url %>
         <h2><%= product.title %></h2>
         <p><%= sanitize product.description %></p>
-        <div class="price"><%= number_to_currency(product.price, unit: 'US$ ') %></div>
+        <div class="price">
+          <%= number_to_currency(product.price, unit: 'US$ ') %>
+          <%= button_to 'Add to Cart', line_items_path(product_id: product) %>
+        </div>
       </li>
     <% end %>
   <% end %>
